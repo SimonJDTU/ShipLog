@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ShipLog</string>
+    <string name="home_new_trip">Ny Sejlads</string>
+    <string name="home_settings">Indstillinger</string>
+    <string name="settings_title">Indstillinger</string>
+    <string name="settings_language">Sprog</string>
+    <string name="settings_looks">Udseende</string>
+    <string name="settings_button_dark">Mørk</string>
+    <string name="settings_button_light">Lys</string>
+    <string name="settings_boat">Båd</string>
 </resources>
