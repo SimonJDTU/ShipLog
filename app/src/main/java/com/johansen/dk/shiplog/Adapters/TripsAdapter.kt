@@ -1,6 +1,7 @@
 package com.johansen.dk.shiplog.Adapters
 
 import android.content.Context
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,9 +26,9 @@ class TripsAdapter(val items : ArrayList<Trip>, val context: Context) : Recycler
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val temp = items.get(position)
         holder?.trip_date?.text = temp.date
-        holder?.trip_ship?.text = holder?.trip_ship?.text.toString() + temp.shipname
-        holder?.trip_fulltime?.text = holder?.trip_fulltime?.text.toString() + temp.length.toString()
-        holder?.trip_crewsize?.text = holder?.trip_crewsize?.text.toString() + temp.crewSize.toString()
+        holder?.trip_ship?.text = temp.shipname
+        holder?.trip_fulltime?.text = temp.length.toString()
+        holder?.trip_crewsize?.text = temp.crewSize.toString()
     }
 }
 
