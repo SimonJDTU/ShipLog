@@ -3,6 +3,7 @@ package com.johansen.dk.shiplog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class Settings : AppCompatActivity() {
@@ -12,6 +13,22 @@ class Settings : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
 
         InsertLanguages()
+
+        SetOnclickListeners()
+
+    }
+
+    private fun SetOnclickListeners() {
+        //TODO:Implement and remove
+        settings_button_dark.setOnClickListener{
+            Toast.makeText(this@Settings,"NOT YET IMPLEMENTED",
+                Toast.LENGTH_LONG).show()}
+        settings_button_light.setOnClickListener{
+            Toast.makeText(this@Settings,"NOT YET IMPLEMENTED",
+                Toast.LENGTH_LONG).show()}
+        settings_button_boat.setOnClickListener{
+            Toast.makeText(this@Settings,"NOT YET IMPLEMENTED",
+                Toast.LENGTH_LONG).show()}
     }
 
     private fun InsertLanguages() {

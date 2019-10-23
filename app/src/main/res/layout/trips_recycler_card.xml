@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="5dp">
 
 
@@ -10,28 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:padding="5dp"
         android:weightSum="3">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/trip_date"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/trip_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/trip_interval"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
-        </LinearLayout>
+            android:text="TextView"
+            android:textAlignment="center" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,19 +31,20 @@
                 android:id="@+id/trip_ship"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="Skibs navn: " />
 
             <TextView
                 android:id="@+id/trip_fulltime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="Turens tid:" />
 
             <TextView
-                android:id="@+id/trip_location"
+                android:id="@+id/trip_crewsize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="Antal bemanding:" />
+
         </LinearLayout>
 
     </LinearLayout>

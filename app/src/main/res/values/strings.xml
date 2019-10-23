@@ -8,4 +8,9 @@
     <string name="settings_button_dark">Mørk</string>
     <string name="settings_button_light">Lys</string>
     <string name="settings_boat">Båd</string>
+
+    <string name="recycler_boat">Skibets navn: </string>
+    <string name="recycler_length">Turens tid: </string>
+    <string name="recycler_crewSize">Antal bemanding: </string>
+
 </resources>
