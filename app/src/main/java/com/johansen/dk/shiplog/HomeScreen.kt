@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.johansen.dk.shiplog.Adapters.TripsAdapter
+import com.johansen.dk.shiplog.adapters.TripsAdapter
 import kotlinx.android.synthetic.main.activity_home_screen.*
 import com.johansen.dk.shiplog.data.Trip
 
