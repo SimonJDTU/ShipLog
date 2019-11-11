@@ -14,6 +14,6 @@ class LoadingScreen : AppCompatActivity() {
         Handler().postDelayed({
             startActivity(Intent(this, HomeScreen::class.java))
             finish()
-        }, 3000)
+        }, 1500)
     }
 }

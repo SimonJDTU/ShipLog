@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1078619332733",
+    "firebase_url": "https://shiplog-3ed98.firebaseio.com",
+    "project_id": "shiplog-3ed98",
+    "storage_bucket": "shiplog-3ed98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078619332733:android:69d0f03607a67d6c009114",
+        "android_client_info": {
+          "package_name": "com.johansen.dk.shiplog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078619332733-luhd7heklp51ro9vuckjsb12pfnjpqtv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.johansen.dk.shiplog",
+            "certificate_hash": "79b91b7337059b25fac874866459f294e4dd11a5"
+          }
+        },
+        {
+          "client_id": "1078619332733-r8v1rt739gk7r8q8sagv8t5cve46jroq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiq3OHK0nWB1uzdjtz_4JZb-T1N5zjzQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078619332733-r8v1rt739gk7r8q8sagv8t5cve46jroq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

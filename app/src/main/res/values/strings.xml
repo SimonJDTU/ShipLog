@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">ShipLog</string>
-    <string name="home_new_trip">Ny Sejlads</string>
-    <string name="home_settings">Indstillinger</string>
+    <string name="home_boatChoice">Dine både</string>
+    <string name="home_temp">TEMPTEMPTEMPTEMPTEMPTEMPTEMPTEMPTEMP</string>
+
+
     <string name="settings_title">Indstillinger</string>
     <string name="settings_language">Sprog</string>
     <string name="settings_looks">Udseende</string>
@@ -12,5 +14,7 @@
     <string name="recycler_boat">Skibets navn: </string>
     <string name="recycler_length">Turens tid: </string>
     <string name="recycler_crewSize">Antal bemanding: </string>
+    <string name="toast_backToLogin">Klik tilbage igen for at lukke appen</string>
+
 
 </resources>
