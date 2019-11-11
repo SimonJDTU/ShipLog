@@ -14,6 +14,7 @@ import com.johansen.dk.shiplog.adapters.TripsAdapter
 import com.johansen.dk.shiplog.data.Trip
 import kotlinx.android.synthetic.main.activity_home_screen.*
 import com.google.firebase.firestore.FirebaseFirestore
+import java.time.LocalDateTime
 
 
 class HomeScreen : AppCompatActivity() {
@@ -28,9 +29,9 @@ class HomeScreen : AppCompatActivity() {
         setOnclickListeners()
 
         //todo:remove
-        //insertDummyData()
+        insertDummyData()
     }
-
+/*
     private fun createTripList() {
         val trips : MutableList<Trip> = mutableListOf()
         db.collection("trips")
@@ -53,6 +54,8 @@ class HomeScreen : AppCompatActivity() {
             }
     }
 
+ */
+
     //TODO: make custom dialog to display ships
     private fun customDialog(){
         val mDialogView = LayoutInflater.from(this).inflate(R.layout.customdialog, null)
@@ -71,22 +74,20 @@ class HomeScreen : AppCompatActivity() {
     }
 
 
-    //Todo: Re eval toasts
-    private fun writeNewTrip(trip : Trip) {
-        db.collection("trips")
-            .add(trip)
-            .addOnSuccessListener {
-                Toast.makeText(applicationContext,"New trip added",Toast.LENGTH_LONG).show()
-            }
-            .addOnFailureListener { e -> Log.w("TAG","Error adding document", e)
-                Toast.makeText(applicationContext,"Couldn't add new trip",Toast.LENGTH_LONG).show()
-            }
-    }
+
 
     //Todo: Delete when unnecessary
     private fun insertDummyData(){
         for (x in 0..10){
-            writeNewTrip(Trip("Helge Ask", (x*2+1).toString(),(x+3).toString(),(x*2+1).toString()))
+            val trip = Trip("Helge Ask", "15", LocalDateTime.now())
+            db.collection("trips")
+                .add(trip)
+                .addOnSuccessListener {
+                    Toast.makeText(applicationContext,"New trip added",Toast.LENGTH_LONG).show()
+                }
+                .addOnFailureListener { e -> Log.w("TAG","Error adding document", e)
+                    Toast.makeText(applicationContext,"Couldn't add new trip",Toast.LENGTH_LONG).show()
+                }
         }
     }
 
@@ -104,6 +105,6 @@ class HomeScreen : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         loaderAnimation.visibility = View.VISIBLE
-        createTripList()
+        //createTripList()
     }
 }

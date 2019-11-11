@@ -30,9 +30,9 @@ class TripsAdapter(val items : MutableList<Trip>, val context: Context) : Recycl
     // Binds each animal in the ArrayList to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val temp = items.get(position)
-        holder?.trip_date?.text = temp.date
+        holder?.trip_date?.text = temp.tripStart.toLocalDate().toString()
         holder?.trip_ship?.text = temp.shipName
-        holder?.trip_fulltime?.text = temp.length.toString()
+        holder?.trip_fulltime?.text = temp.tripLength.get()
         holder?.trip_crewsize?.text = temp.crewSize.toString()
     }
 }
