@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.johansen.dk.shiplog.R
+import com.johansen.dk.shiplog.data.Note
 import com.johansen.dk.shiplog.data.Trip
 import kotlinx.android.synthetic.main.trips_recycler_card.view.*
 
-class TripsAdapter(val items : MutableList<Trip>, val context: Context) : RecyclerView.Adapter<tripViewHolder>() {
+class NoteAdapter(private val items : MutableList<Note>, private val context: Context) : RecyclerView.Adapter<NoteViewHolder>() {
 
     // Gets the number of animals in the list
     override fun getItemCount(): Int {
@@ -17,10 +18,10 @@ class TripsAdapter(val items : MutableList<Trip>, val context: Context) : Recycl
     }
 
     // Inflates the item views
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): tripViewHolder {
-        return tripViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
+        return NoteViewHolder(
             LayoutInflater.from(context).inflate(
-                R.layout.trips_recycler_card,
+                R.layout.note_recycler_card,
                 parent,
                 false
             )
@@ -28,19 +29,16 @@ class TripsAdapter(val items : MutableList<Trip>, val context: Context) : Recycl
     }
 
     // Binds each animal in the ArrayList to a view
-    override fun onBindViewHolder(holder: tripViewHolder, position: Int) {
-        val temp = items.get(position)
-        //holder?.trip_date?.text = temp.tripStart.toLocalDate().toString()
-        holder?.trip_ship?.text = temp.shipName
-        holder?.trip_captain?.text = temp.crewCaptain
-        holder?.trip_crewsize?.text = temp.crewSize.toString()
+    override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
+        val temp = items[position]
+        holder.trip_ship?.text = temp.shipSpeed
+
     }
 }
 
-class tripViewHolder (view: View) : RecyclerView.ViewHolder(view) {
+class NoteViewHolder (view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to
     //val trip_date = view.trip_date
     val trip_ship = view.trip_ship
-    val trip_captain = view.trip_captain
-    val trip_crewsize = view.trip_crewsize
+
 }

@@ -19,7 +19,6 @@ import java.time.LocalDateTime
 
 class HomeScreen : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
-
     private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,9 +28,9 @@ class HomeScreen : AppCompatActivity() {
         setOnclickListeners()
 
         //todo:remove
-        insertDummyData()
+        //insertDummyData()
     }
-/*
+
     private fun createTripList() {
         val trips : MutableList<Trip> = mutableListOf()
         db.collection("trips")
@@ -39,8 +38,8 @@ class HomeScreen : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     for (document in task.result!!) {
-                        trips.add(Trip(document.get("shipName").toString(),document.get("date").toString(),
-                            document.get("length").toString(),document.get("crewSize").toString(),document.get("tripID").toString()))
+                        trips.add(Trip(document.get("shipName") as String,
+                            document.get("crewSize") as Long,document.get("crewCaptain") as String))
                     }
                     trips_list.layoutManager = LinearLayoutManager(this)
                     trips_list.adapter = TripsAdapter(trips, this)
@@ -54,7 +53,7 @@ class HomeScreen : AppCompatActivity() {
             }
     }
 
- */
+
 
     //TODO: make custom dialog to display ships
     private fun customDialog(){
@@ -75,11 +74,10 @@ class HomeScreen : AppCompatActivity() {
 
 
 
-
     //Todo: Delete when unnecessary
     private fun insertDummyData(){
         for (x in 0..10){
-            val trip = Trip("Helge Ask", "15", LocalDateTime.now())
+            val trip = Trip("Helge Ask", 15, "Mogens Hansen")
             db.collection("trips")
                 .add(trip)
                 .addOnSuccessListener {
@@ -105,6 +103,7 @@ class HomeScreen : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         loaderAnimation.visibility = View.VISIBLE
-        //createTripList()
+        trips_list.visibility = View.GONE
+        createTripList()
     }
 }

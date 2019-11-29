@@ -14,26 +14,14 @@ class Settings : AppCompatActivity() {
 
         InsertLanguages()
 
-        SetOnclickListeners()
-
     }
 
     private fun SetOnclickListeners() {
-        //TODO:Implement and remove
-        settings_button_dark.setOnClickListener{
-            Toast.makeText(this@Settings,"NOT YET IMPLEMENTED",
-                Toast.LENGTH_LONG).show()}
-        settings_button_light.setOnClickListener{
-            Toast.makeText(this@Settings,"NOT YET IMPLEMENTED",
-                Toast.LENGTH_LONG).show()}
-        settings_button_boat.setOnClickListener{
-            Toast.makeText(this@Settings,"NOT YET IMPLEMENTED",
-                Toast.LENGTH_LONG).show()}
     }
 
     private fun InsertLanguages() {
         //TODO:remove dummy data + implement correct handling of language choice from spinner
-        val items = arrayOf("1", "2", "three")
+        val items = arrayOf("This isn't implemented", "DK", "ENG", "GER")
         spinner1.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
     }
 }

@@ -16,5 +16,12 @@
     <string name="recycler_crewSize">Antal bemanding: </string>
     <string name="toast_backToLogin">Klik tilbage igen for at lukke appen</string>
 
+    <string name="newTrip_title">Ny rejse</string>
+    <string name="newTrip_newNote">Tilføj note</string>
+
+    <string name="noteCard_windSpeed">Vindhastighed</string>
+    <string name="noteCard_windDirection">Vindretning</string>
+    <string name="noteCard_sailSpeed">Sejlhastighed</string>
+    <string name="noteCard_sailDirection">Sejlretning</string>
 
 </resources>

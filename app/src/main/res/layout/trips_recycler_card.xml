@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/splitter1"
+            android:id="@+id/splitter4"
             android:layout_width="1dp"
             android:layout_height="0dp"
             android:layout_marginStart="5dp"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:orientation="vertical"
-            app:layout_constraintStart_toEndOf="@+id/splitter1"
+            app:layout_constraintStart_toEndOf="@+id/splitter4"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -52,7 +52,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Turens tid:"
+                android:text="Turens Kaptajn:"
                 android:textAlignment="viewEnd" />
 
             <TextView
@@ -63,7 +63,7 @@
         </LinearLayout>
 
         <View
-            android:id="@+id/splitter2"
+            android:id="@+id/splitter5"
             android:layout_width="1dp"
             android:layout_height="0dp"
             android:layout_marginStart="5dp"
@@ -82,26 +82,26 @@
             android:layout_marginStart="5dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/splitter2"
+            app:layout_constraintStart_toEndOf="@+id/splitter5"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/trip_ship"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Skibs navn: " />
+                android:text="Skibs navn Text" />
 
             <TextView
-                android:id="@+id/trip_fulltime"
+                android:id="@+id/trip_captain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Turens tid:" />
+                android:text="Turens Kaptajn Text" />
 
             <TextView
                 android:id="@+id/trip_crewsize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Antal bemanding:" />
+                android:text="Antal bemanding Text" />
 
         </LinearLayout>
 
