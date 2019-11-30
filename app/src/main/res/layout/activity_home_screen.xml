@@ -18,6 +18,15 @@
         android:layout_marginTop="0dp"
         app:srcCompat="@drawable/logo_dansk" />
 
+    <View
+        android:id="@+id/splitter"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:paddingVertical="10dp" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
@@ -79,10 +88,10 @@
         android:id="@+id/trips_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout"
+        android:layout_below="@+id/splitter"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp" >
+        android:layout_marginEnd="20dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 

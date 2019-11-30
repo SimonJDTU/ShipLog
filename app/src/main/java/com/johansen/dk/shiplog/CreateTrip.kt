@@ -15,23 +15,26 @@ class CreateTrip : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
     private val trip = Trip("Helge Ask", 15, "Troels")
-    private val noteList : MutableList<Note> = mutableListOf()
+    private val noteList : MutableList<Note> = mutableListOf(Note())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_trip)
 
         endTripBtn.setOnClickListener {if (checkFinishOkay()) finish() else Toast.makeText(this,"yeet",Toast.LENGTH_SHORT).show() }
-        addNoteBtn.setOnClickListener{
-            noteList.add(Note("test","test","test","test","test"))
-            makeNoteList()
-        }
+
         makeNoteList()
     }
 
     private fun makeNoteList() {
         notes_list.layoutManager = LinearLayoutManager(this)
         notes_list.adapter = NoteAdapter(noteList, this)
+
+        //https://stackoverflow.com/questions/29424944/recyclerview-itemclicklistener-in-kotlin
+        notes_list.onItemClick = {
+            noteList.add(Note())
+            makeNoteList()
+        }
     }
 
     private fun checkFinishOkay() : Boolean {
@@ -53,6 +56,11 @@ class CreateTrip : AppCompatActivity() {
 
     override fun onBackPressed() {
         Toast.makeText(this,"KLIK PÅ SLUT TUR KNAPPEN",Toast.LENGTH_SHORT).show()
+    }
+
+
+    private fun partItemClicked(partItem : Note) {
+
     }
 
 }
