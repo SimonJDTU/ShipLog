@@ -68,7 +68,7 @@ class HomeScreen : AppCompatActivity() {
 
     private fun setOnclickListeners() {
         home_trip.setOnClickListener{startActivity(Intent(this, CreateTrip::class.java))}
-        home_boats.setOnClickListener{customDialog()}
+        home_boats.setOnClickListener{startActivity(Intent(this, ShipOverview::class.java))}
         home_settings.setOnClickListener{startActivity(Intent(this, Settings::class.java))}
     }
 

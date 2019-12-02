@@ -17,6 +17,7 @@
             android:id="@+id/note_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:text="DATE_NOT_IMPLEMENTED" />
 
         <View
@@ -49,14 +50,16 @@
                     android:textAlignment="center"
                     app:autoSizeTextType="uniform" />
 
-                <EditText
-                    android:id="@+id/note_shipSpeed"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/note_sailSpeed"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="10"
                     android:hint="km/t"
-                    android:inputType="textPersonName" />
+                    android:maxLines="1"
+                    android:textAlignment="center"
+                    app:autoSizeTextType="uniform" />
+
             </LinearLayout>
 
             <View
@@ -83,14 +86,16 @@
                     android:textAlignment="center"
                     app:autoSizeTextType="uniform" />
 
-                <EditText
-                    android:id="@+id/note_shipDirection"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/note_sailDirection"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="10"
                     android:hint="N/S/Ø/V"
-                    android:inputType="textPersonName" />
+                    android:maxLines="1"
+                    android:textAlignment="center"
+                    app:autoSizeTextType="uniform" />
+
             </LinearLayout>
 
             <View
@@ -117,14 +122,16 @@
                     android:textAlignment="center"
                     app:autoSizeTextType="uniform" />
 
-                <EditText
+                <TextView
                     android:id="@+id/note_windSpeed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:ems="10"
                     android:hint="km/t"
-                    android:inputType="textPersonName" />
+                    android:maxLines="1"
+                    android:textAlignment="center"
+                    app:autoSizeTextType="uniform" />
+
             </LinearLayout>
 
             <View
@@ -151,14 +158,16 @@
                     android:textAlignment="center"
                     app:autoSizeTextType="uniform" />
 
-                <EditText
+                <TextView
                     android:id="@+id/note_windDirection"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="10"
                     android:hint="N/S/Ø/V"
-                    android:inputType="textPersonName" />
+                    android:maxLines="1"
+                    android:textAlignment="center"
+                    app:autoSizeTextType="uniform" />
+
             </LinearLayout>
 
         </LinearLayout>

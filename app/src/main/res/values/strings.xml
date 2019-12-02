@@ -23,6 +23,8 @@
     <string name="noteCard_sailSpeed">Sejlhastighed</string>
     <string name="noteCard_sailDirection">Sejlretning</string>
 
+    <string name="chooseBoat_title">Vælg en båd</string>
+
     <string name="toast_backToLogin">Klik tilbage igen for at lukke appen</string>
 
 </resources>
