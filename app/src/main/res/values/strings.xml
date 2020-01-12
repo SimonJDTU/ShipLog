@@ -3,7 +3,6 @@
     <string name="home_boatChoice">Dine både</string>
     <string name="home_temp">TEMPTEMPTEMPTEMPTEMPTEMPTEMPTEMPTEMP</string>
 
-
     <string name="settings_title">Indstillinger</string>
     <string name="settings_language">Sprog</string>
     <string name="settings_looks">Udseende</string>
@@ -25,6 +24,13 @@
 
     <string name="chooseBoat_title">Vælg en båd</string>
 
-    <string name="toast_backToLogin">Klik tilbage igen for at lukke appen</string>
+    <string name="toast_closeApp">Klik tilbage igen for at lukke appen</string>
+    <string name="toast_backToHome">Klik tilbage igen for at gå til menu</string>
+
+    <string name="dialog_button_positive">Vælg</string>
+
+
+    <string name="tempLoading">Denne app har til formål at erstatte en fysisk logbog som bliver brugt under sejlads med vikingeskibe. Brugeren skal kunne indskrive detaljer omkring turen som vindstyrke, vindretning, sejlstørrelse og stilling osv.
+    Der mangler stadig flere features, dog er den helt bersale brugscase implementeret.</string>
 
 </resources>

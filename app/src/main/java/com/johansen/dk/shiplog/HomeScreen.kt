@@ -14,7 +14,6 @@ import com.johansen.dk.shiplog.adapters.TripsAdapter
 import com.johansen.dk.shiplog.data.Trip
 import kotlinx.android.synthetic.main.activity_home_screen.*
 import com.google.firebase.firestore.FirebaseFirestore
-import java.time.LocalDateTime
 
 
 class HomeScreen : AppCompatActivity() {
@@ -53,8 +52,6 @@ class HomeScreen : AppCompatActivity() {
             }
     }
 
-
-
     //TODO: make custom dialog to display ships
     private fun customDialog(){
         val mDialogView = LayoutInflater.from(this).inflate(R.layout.customdialog, null)
@@ -67,7 +64,7 @@ class HomeScreen : AppCompatActivity() {
     }
 
     private fun setOnclickListeners() {
-        home_trip.setOnClickListener{startActivity(Intent(this, CreateTrip::class.java))}
+        home_trip.setOnClickListener{startActivity(Intent(this, PreTrip::class.java))}
         home_boats.setOnClickListener{startActivity(Intent(this, ShipOverview::class.java))}
         home_settings.setOnClickListener{startActivity(Intent(this, Settings::class.java))}
     }
@@ -96,7 +93,7 @@ class HomeScreen : AppCompatActivity() {
             return
         }
         this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, getString(R.string.toast_backToLogin), Toast.LENGTH_LONG).show()
+        Toast.makeText(this, getString(R.string.toast_closeApp), Toast.LENGTH_LONG).show()
         Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
