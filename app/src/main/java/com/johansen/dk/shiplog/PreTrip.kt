@@ -1,5 +1,6 @@
 package com.johansen.dk.shiplog
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -21,15 +22,21 @@ class PreTrip : AppCompatActivity() {
 
         setOnclickListeners()
 
-        setShipShowcase()
+        setShipShowcase(null)
 
 
         }
 
     //TODO: Insert when implemented image data collection from firebase storage
-    private fun setShipShowcase() {
-        preTrip_shipSelection.setImageResource(R.mipmap.image2)
-        preTrip_shipName.text = "Helge Ask _ TEMPORARY"
+    private fun setShipShowcase(ship : Ship?) {
+        if (ship != null) {
+            preTrip_shipName.text = ship.name
+            //TODO: Set image connected to shipresource
+            preTrip_shipSelection.setImageResource(R.mipmap.image2)
+        }else{
+            preTrip_shipName.text = "HELGE ASK _ TEMP TEXT"
+            preTrip_shipSelection.setImageResource(R.mipmap.image2)
+        }
     }
 
     private fun setOnclickListeners() {
@@ -38,7 +45,7 @@ class PreTrip : AppCompatActivity() {
                 dialogContinue()
             } else {
                 //TODO: make text adaptive to translation
-                Toast.makeText(this, "Udfyld venligst alle elementer", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_insertInfo, Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -61,10 +68,10 @@ class PreTrip : AppCompatActivity() {
 }
 
     private fun regexCheck(): Boolean {
-        if(preTrip_captain.text==null || methodSelected==null){
-            return true
+        if(preTrip_captain.text.toString().trim().isEmpty() || methodSelected==null || preTrip_crewsize.text.toString().trim().isEmpty()){
+            return false
         }
-        return false
+        return true
     }
 
     //dont want to reinvent the wheel: https://stackoverflow.com/questions/8430805/clicking-the-back-button-twice-to-exit-an-activity
@@ -84,7 +91,7 @@ class PreTrip : AppCompatActivity() {
         MaterialDialog(this).show {
             listItemsSingleChoice(
                 items = myItems,
-                initialSelection = 1
+                initialSelection = 0
             ) { dialog, index, text ->
                 //TODO: Select the correct ship
             }
@@ -93,10 +100,20 @@ class PreTrip : AppCompatActivity() {
     }
 
     private fun dialogContinue(){
-        val myItems = listOf("Hello", "World")
-
         MaterialDialog(this).show {
-            listItemsSingleChoice(items = myItems)
+            message(R.string.dialog_preTrip_msg)
+            positiveButton(R.string.dialog_button_yes) { dialog ->
+                goToCreateActivity()
+            }
+            negativeButton(R.string.dialog_button_no) { dialog ->
+                this.dismiss()
+            }
         }
+    }
+
+    private fun goToCreateActivity(){
+        shipList
+        startActivity(Intent(this, CreateTrip::class.java))
+        finish()
     }
 }

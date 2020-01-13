@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chooseBoat_title">Choose a boat</string>
+    <string name="dialog_button_no">No</string>
+    <string name="dialog_button_positive">Pick</string>
+    <string name="dialog_button_yes">Yes</string>
+    <string name="dialog_preTrip_msg">Are you sure you want to start?</string>
+    <string name="home_boatChoice">Your Boats</string>
+    <string name="newTrip_newNote">Add Note</string>
+    <string name="newTrip_title">New trip</string>
+    <string name="noteCard_sailDirection">Sail Direction</string>
+    <string name="noteCard_sailSpeed">Sail Speed</string>
+    <string name="noteCard_windDirection">Wind Direction</string>
+    <string name="noteCard_windSpeed">Wind Speed</string>
+    <string name="settings_boat">Boat</string>
+    <string name="settings_button_dark">Dark</string>
+    <string name="settings_button_light">Light</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_looks">Looks</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_weather">Weather</string>
+    <string name="toast_backToHome">Click back again to go back to the menu</string>
+    <string name="toast_closeApp">Click back again to close the app</string>
+    <string name="tripCard_boat">"Ships name: "</string>
+    <string name="tripCard_captain">"Trips captain: "</string>
+    <string name="tripCard_crewSize">"Crewmembers: "</string>
+    <string name="preTrip_captain_name">Captains Name</string>
+    <string name="preTrip_drivingForce">Driving Force</string>
+    <string name="preTrip_ship">Ship</string>
+    <string name="preTrip_title">Before You Start...</string>
+    <string name="preTrip_startBtn">Start Trip</string>
+    <string name="preTrip_shipInfo">Click to change</string>
+    <string name="newTrip_endBtn">End Trip</string>
+    <string name="settings_disclaimerBtn">Disclaimer</string>
+    <string name="preTrip_captain_hint">NAME</string>
+    <string name="toast_endTrip">Pres the \"End Trip\" Button</string>
+    <string name="toast_tripAdded">New trip added</string>
+    <string name="toast_tripNotAdded">Couldn\'t add trip</string>
+    <string name="toast_fillAllBoxes">Fill all boxes</string>
+    <string name="preTrip_crewSize">Crewmembers</string>
+    <string name="preTrip_crewSize_hint">HOW MANY?</string>
+    <string name="toast_insertInfo">Please fill all boxes</string>
+</resources>

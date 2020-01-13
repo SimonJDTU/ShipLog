@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">ShipLog</string>
-    <string name="home_boatChoice">Dine både</string>
-    <string name="home_temp">TEMPTEMPTEMPTEMPTEMPTEMPTEMPTEMPTEMP</string>
+    <string name="app_name" translatable="false">ShipLog</string>
+    <string name="home_boatChoice">Dine Både</string>
+    <string name="home_temp" translatable="false">TEMPTEMPTEMPTEMPTEMPTEMPTEMPTEMPTEMP</string>
 
     <string name="settings_title">Indstillinger</string>
     <string name="settings_language">Sprog</string>
@@ -9,13 +9,26 @@
     <string name="settings_button_dark">Mørk</string>
     <string name="settings_button_light">Lys</string>
     <string name="settings_boat">Båd</string>
+    <string name="settings_weather">Vejr</string>
+    <string name="settings_disclaimerBtn">Ansvarsfraskrivelse</string>
 
     <string name="tripCard_boat">Skibets navn: </string>
     <string name="tripCard_captain">Turens kaptajn: </string>
     <string name="tripCard_crewSize">Antal bemanding: </string>
 
+    <string name="preTrip_title">Før Du Rejser...</string>
+    <string name="preTrip_captain_name">Skippers Navn</string>
+    <string name="preTrip_captain_hint">NAVN</string>
+    <string name="preTrip_ship">Skib</string>
+    <string name="preTrip_drivingForce">Drivkraft</string>
+    <string name="preTrip_startBtn">Start Rejse</string>
+    <string name="preTrip_shipInfo">Klik for at skifte</string>
+    <string name="preTrip_crewSize">Antal Besætning</string>
+    <string name="preTrip_crewSize_hint">HVOR MANGE?</string>
+
     <string name="newTrip_title">Ny rejse</string>
     <string name="newTrip_newNote">Tilføj note</string>
+    <string name="newTrip_endBtn">Slut Rejse</string>
 
     <string name="noteCard_windSpeed">Vindhastighed</string>
     <string name="noteCard_windDirection">Vindretning</string>
@@ -26,11 +39,22 @@
 
     <string name="toast_closeApp">Klik tilbage igen for at lukke appen</string>
     <string name="toast_backToHome">Klik tilbage igen for at gå til menu</string>
+    <string name="toast_endTrip">Klik På "Slut Tur" Knappen</string>
+    <string name="toast_tripAdded">Ny rejse tilføjet</string>
+    <string name="toast_tripNotAdded">Kunne ikke tilføje rejse</string>
+    <string name="toast_fillAllBoxes">Udfyld alle boxe</string>
+    <string name="toast_insertInfo">Udfyld venligst alle bokse</string>
+
 
     <string name="dialog_button_positive">Vælg</string>
+    <string name="dialog_button_yes">Ja</string>
+    <string name="dialog_button_no">Nej</string>
+    <string name="dialog_preTrip_msg">Er du sikker på du vil begynde rejsen?</string>
 
 
-    <string name="tempLoading">Denne app har til formål at erstatte en fysisk logbog som bliver brugt under sejlads med vikingeskibe. Brugeren skal kunne indskrive detaljer omkring turen som vindstyrke, vindretning, sejlstørrelse og stilling osv.
+
+
+    <string name="tempLoading" translatable="false">Denne app har til formål at erstatte en fysisk logbog som bliver brugt under sejlads med vikingeskibe. Brugeren skal kunne indskrive detaljer omkring turen som vindstyrke, vindretning, sejlstørrelse og stilling osv.
     Der mangler stadig flere features, dog er den helt bersale brugscase implementeret.</string>
 
 </resources>

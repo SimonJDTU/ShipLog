@@ -30,9 +30,8 @@ class CreateTrip : AppCompatActivity() {
 
     private fun addNoteToList() {
         if (note_shipDirection.text.toString() == "" || note_shipSpeed.text.toString() == "" || note_windDirection.text.toString() == "" || note_windSpeed.text.toString() == "") {
-            Toast.makeText(this, "Udfyld alle bokse", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.toast_fillAllBoxes, Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(this, "Note added", Toast.LENGTH_SHORT).show()
             noteList.add(
                 Note(
                     shipDirection = note_shipDirection.text.toString(),
@@ -55,27 +54,21 @@ class CreateTrip : AppCompatActivity() {
         return true
     }
 
-
     private fun createTrip() {
         db.collection("trips")
             .add(trip)
             .addOnSuccessListener {
-                Toast.makeText(applicationContext, "New trip added", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, R.string.toast_tripAdded, Toast.LENGTH_LONG).show()
             }
             .addOnFailureListener { e ->
                 Log.w("TAG", "Error adding document", e)
-                Toast.makeText(applicationContext, "Couldn't add new trip", Toast.LENGTH_LONG)
+                Toast.makeText(applicationContext, R.string.toast_tripNotAdded, Toast.LENGTH_LONG)
                     .show()
             }
     }
 
     override fun onBackPressed() {
-        Toast.makeText(this, "KLIK PÅ SLUT TUR KNAPPEN", Toast.LENGTH_SHORT).show()
-    }
-
-
-    private fun partItemClicked(partItem: Note) {
-
+        Toast.makeText(this, R.string.toast_endTrip, Toast.LENGTH_SHORT).show()
     }
 
 }

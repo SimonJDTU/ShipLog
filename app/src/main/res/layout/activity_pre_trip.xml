@@ -16,7 +16,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         android:background="#3DAA33"
-        android:text="START REJSE" />
+        android:text="@string/preTrip_startBtn" />
 
     <TextView
         android:id="@+id/PreTrip_title"
@@ -26,10 +26,11 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="26dp"
-        android:text="Før Du Rejser..."
+        android:maxLines="1"
+        android:text="@string/preTrip_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="@color/colorPrimary"
-        android:textSize="40sp" />
+        android:textSize="35dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,8 +48,7 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Skippers Navn"
+            android:text="@string/preTrip_captain_name"
             android:textAlignment="textStart"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="NAVN"
+            android:hint="@string/preTrip_captain_hint"
             android:inputType="textPersonName" />
 
         <TextView
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Skib"
+            android:text="@string/preTrip_ship"
             android:textAlignment="textStart"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="Klik for at skifte"
+                android:text="@string/preTrip_shipInfo"
                 android:textColor="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -112,17 +112,11 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <TextView
             android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Drivkraft"
+            android:layout_marginTop="15dp"
+            android:text="@string/preTrip_drivingForce"
             android:textAlignment="textStart"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
@@ -152,6 +146,24 @@
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/icon_oar" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/preTrip_crewSize"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/preTrip_crewsize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/preTrip_crewSize_hint"
+            android:inputType="textPersonName" />
 
     </LinearLayout>
 
