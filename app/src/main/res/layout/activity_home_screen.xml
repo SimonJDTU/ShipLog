@@ -78,7 +78,7 @@
             android:cropToPadding="false"
             android:padding="1dp"
             android:scaleType="centerInside"
-            android:src="@drawable/icon_settings"
+            android:src="@drawable/icon_weather"
             android:textAlignment="center"
             android:textColor="@android:color/white" />
 

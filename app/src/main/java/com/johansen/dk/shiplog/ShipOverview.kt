@@ -10,7 +10,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.johansen.dk.shiplog.adapters.TripsAdapter
+import com.johansen.dk.shiplog.adapters.ShipAdapter
+import com.johansen.dk.shiplog.data.Ship
+import com.johansen.dk.shiplog.data.Trip
 import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.activity_ship_overview.*
 import java.io.File
@@ -27,14 +29,15 @@ class ShipOverview : AppCompatActivity() {
 
         setOnclickListeners()
 
-        trips_list.layoutManager = LinearLayoutManager(this)
-        //trips_list.adapter = TripsAdapter(trips, this)
+        val ships : MutableList<Ship> = mutableListOf()
+
+        chooseBoat_recyclerView.layoutManager = LinearLayoutManager(this)
+        trips_list.adapter = ShipAdapter(ships, this)
     }
 
     private fun setOnclickListeners() {
-        chooseBoat_recyclerView.setOnClickListener{Toast.makeText(this, "NOT IMPLEMENTED",Toast.LENGTH_SHORT).show()}
+        chooseBoat_addBoatBtn.setOnClickListener{Toast.makeText(this, "NOT IMPLEMENTED",Toast.LENGTH_SHORT).show()}
     }
-
 
     //https://android--code.blogspot.com/2018/04/android-kotlin-save-image-to-internal.html
     // Method to save an image to internal storage
@@ -76,6 +79,8 @@ class ShipOverview : AppCompatActivity() {
         return Uri.parse(file.absolutePath)
     }
 
-
-
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.no_movement,R.anim.slide_out_down)
+    }
 }

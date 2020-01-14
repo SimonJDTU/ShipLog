@@ -18,7 +18,6 @@ class Trip(var shipName : String, var crewSize : Long, var crewCaptain : String)
 
 }
 
-//
 fun randomGenerator(): String {
     val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
 

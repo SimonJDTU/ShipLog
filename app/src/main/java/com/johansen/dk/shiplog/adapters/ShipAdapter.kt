@@ -1,6 +1,7 @@
 package com.johansen.dk.shiplog.adapters
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,13 +29,13 @@ class ShipAdapter(private val items : MutableList<Ship>, private val context: Co
         val temp = items[position]
         //holder.time?.text = temp.time
         holder.shipCard_name.text=temp.name
-        //holder.shipCard_image.setImageResource()
+        holder.shipCard_image.setImageURI(Uri.parse(temp.image.toString()))
     }
 }
 
 class ShipViewHolder (view: View) : RecyclerView.ViewHolder(view) {
     //val time = view.note_date
-    val shipCard_name = view.shipCard_name
-    val shipCard_image = view.shipCard_image
+    val shipCard_name = view.shipCard_name!!
+    val shipCard_image = view.shipCard_image!!
 }
 

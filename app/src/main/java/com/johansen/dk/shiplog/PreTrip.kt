@@ -112,8 +112,12 @@ class PreTrip : AppCompatActivity() {
     }
 
     private fun goToCreateActivity(){
-        shipList
         startActivity(Intent(this, CreateTrip::class.java))
         finish()
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.no_movement,R.anim.slide_out_down)
     }
 }

@@ -2,6 +2,7 @@ package com.johansen.dk.shiplog
 
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -33,8 +34,6 @@ class HomeScreen : AppCompatActivity() {
 
         setOnclickListeners()
 
-        //todo:remove
-        //insertDummyData()
     }
 
     private fun createTripList() {
@@ -59,21 +58,23 @@ class HomeScreen : AppCompatActivity() {
             }
     }
 
-    //TODO: make custom dialog to display ships
-    private fun customDialog(){
-        val mDialogView = LayoutInflater.from(this).inflate(R.layout.customdialog, null)
-        //AlertDialogBuilder
-        val mBuilder = AlertDialog.Builder(this)
-            .setView(mDialogView)
-            .setTitle("Login Form")
-
-        mBuilder.show()
-    }
-
     private fun setOnclickListeners() {
-        home_trip.setOnClickListener{startActivity(Intent(this, PreTrip::class.java))}
-        home_boats.setOnClickListener{startActivity(Intent(this, ShipOverview::class.java))}
-        home_settings.setOnClickListener{startActivity(Intent(this, Settings::class.java))}
+        home_trip.setOnClickListener{
+            startActivity(Intent(this, PreTrip::class.java))
+            overridePendingTransition(R.anim.slide_in_bottom,R.anim.no_movement)
+        }
+
+        home_boats.setOnClickListener{
+            startActivity(Intent(this, ShipOverview::class.java))
+            overridePendingTransition(R.anim.slide_in_bottom,R.anim.no_movement)
+        }
+
+        home_settings.setOnClickListener{
+            val openURL = Intent(Intent.ACTION_VIEW)
+            openURL.data = Uri.parse("https://www.dmi.dk/")
+            startActivity(openURL)
+            overridePendingTransition(R.anim.slide_in_bottom,R.anim.no_movement)
+        }
     }
 
     //Todo: Delete when unnecessary

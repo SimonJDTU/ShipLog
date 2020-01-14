@@ -71,4 +71,9 @@ class CreateTrip : AppCompatActivity() {
         Toast.makeText(this, R.string.toast_endTrip, Toast.LENGTH_SHORT).show()
     }
 
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.no_movement,R.anim.slide_out_down)
+    }
+
 }
