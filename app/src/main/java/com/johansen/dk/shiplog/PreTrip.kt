@@ -1,9 +1,9 @@
 package com.johansen.dk.shiplog
 
+import android.content.Context
 import android.content.Intent
+import android.os.*
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.os.Handler
 import android.widget.Toast
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
@@ -15,15 +15,17 @@ class PreTrip : AppCompatActivity() {
     private val shipList : List<Ship> = emptyList()
     private var methodSelected : Boolean? = null
     private var doubleBackToExitPressedOnce = false
+    private lateinit var vibe : Vibrator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pre_trip)
 
+        vibe = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+
         setOnclickListeners()
 
         setShipShowcase(null)
-
 
         }
 
@@ -44,7 +46,6 @@ class PreTrip : AppCompatActivity() {
             if (regexCheck()) {
                 dialogContinue()
             } else {
-                //TODO: make text adaptive to translation
                 Toast.makeText(this, R.string.toast_insertInfo, Toast.LENGTH_SHORT).show()
             }
         }
@@ -79,10 +80,13 @@ class PreTrip : AppCompatActivity() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
             return
+        } else{
+            vibrate()
+            this.doubleBackToExitPressedOnce = true
+            Toast.makeText(this, getString(R.string.toast_backToHome), Toast.LENGTH_LONG).show()
+            Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
         }
-        this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, getString(R.string.toast_backToHome), Toast.LENGTH_LONG).show()
-        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+
     }
 
     private fun dialogShipchoice(){
@@ -119,5 +123,13 @@ class PreTrip : AppCompatActivity() {
     override fun finish() {
         super.finish()
         overridePendingTransition(R.anim.no_movement,R.anim.slide_out_down)
+    }
+
+    private fun vibrate(){
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibe.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibe.vibrate(200)
+        }
     }
 }

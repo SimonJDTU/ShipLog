@@ -45,7 +45,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/preTrip_captain_name"
@@ -59,6 +59,24 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/preTrip_captain_hint"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/preTrip_crewSize"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/preTrip_crewsize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/preTrip_crewSize_hint"
             android:inputType="textPersonName" />
 
         <TextView
@@ -146,24 +164,6 @@
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/icon_oar" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/preTrip_crewSize"
-            android:textAlignment="textStart"
-            android:textColor="@color/colorPrimary"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/preTrip_crewsize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/preTrip_crewSize_hint"
-            android:inputType="textPersonName" />
 
     </LinearLayout>
 

@@ -36,6 +36,7 @@
     <string name="noteCard_sailDirection">Sejlretning</string>
 
     <string name="chooseBoat_title">Vælg en båd</string>
+    <string name="chooseBoat_addBoatBtn">Tilføj Båd</string>
 
     <string name="toast_closeApp">Klik tilbage igen for at lukke appen</string>
     <string name="toast_backToHome">Klik tilbage igen for at gå til menu</string>
@@ -44,15 +45,13 @@
     <string name="toast_tripNotAdded">Kunne ikke tilføje rejse</string>
     <string name="toast_fillAllBoxes">Udfyld alle boxe</string>
     <string name="toast_insertInfo">Udfyld venligst alle bokse</string>
+    <string name="toast_fetchTripFailed">Kunne ikke hente rejser</string>
 
 
     <string name="dialog_button_positive">Vælg</string>
     <string name="dialog_button_yes">Ja</string>
     <string name="dialog_button_no">Nej</string>
     <string name="dialog_preTrip_msg">Er du sikker på du vil begynde rejsen?</string>
-
-
-
 
     <string name="tempLoading" translatable="false">Denne app har til formål at erstatte en fysisk logbog som bliver brugt under sejlads med vikingeskibe. Brugeren skal kunne indskrive detaljer omkring turen som vindstyrke, vindretning, sejlstørrelse og stilling osv.
     Der mangler stadig flere features, dog er den helt bersale brugscase implementeret.</string>

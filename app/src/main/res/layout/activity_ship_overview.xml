@@ -18,7 +18,8 @@
         android:gravity="right"
         android:text="@string/chooseBoat_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="35dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chooseBoat_recyclerView"
@@ -41,7 +42,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
-        android:text="Tilføj Båd"
+        android:text="@string/chooseBoat_addBoatBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -1,10 +1,10 @@
 package com.johansen.dk.shiplog
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
-import android.os.Bundle
-import android.os.Handler
+import android.os.*
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.crashlytics.android.Crashlytics
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -25,12 +26,15 @@ import kotlinx.android.synthetic.main.activity_home_screen.*
 class HomeScreen : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
     private val db = FirebaseFirestore.getInstance()
+    private lateinit var vibe : Vibrator
 
     //private val mStorageRef = FirebaseStorage.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
+
+        vibe = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         setOnclickListeners()
 
@@ -53,7 +57,7 @@ class HomeScreen : AppCompatActivity() {
                 } else {
                     trips_list.visibility = View.GONE
                     loaderAnimation.visibility = View.VISIBLE
-                    Toast.makeText(applicationContext, "Couldn't read trip", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, R.string.toast_fetchTripFailed, Toast.LENGTH_LONG).show()
                 }
             }
     }
@@ -96,11 +100,12 @@ class HomeScreen : AppCompatActivity() {
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
-            return
+        }else{
+            vibrate()
+            this.doubleBackToExitPressedOnce = true
+            Toast.makeText(this, getString(R.string.toast_closeApp), Toast.LENGTH_LONG).show()
+            Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
         }
-        this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, getString(R.string.toast_closeApp), Toast.LENGTH_LONG).show()
-        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
     override fun onResume() {
@@ -109,4 +114,16 @@ class HomeScreen : AppCompatActivity() {
         trips_list.visibility = View.GONE
         createTripList()
     }
+
+    private fun vibrate(){
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibe.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibe.vibrate(200)
+        }
+    }
+
+
+
+
 }

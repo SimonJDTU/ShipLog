@@ -1,7 +1,12 @@
 package com.johansen.dk.shiplog
 
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,27 +16,36 @@ import com.johansen.dk.shiplog.data.Note
 import com.johansen.dk.shiplog.data.Trip
 import kotlinx.android.synthetic.main.activity_create_trip.*
 
+
 class CreateTrip : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
     private val trip = Trip("Helge Ask", 15, "Troels")
     private val noteList: MutableList<Note> = mutableListOf()
+    private lateinit var vibe : Vibrator
+    private lateinit var inputManager: InputMethodManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_trip)
 
+        vibe = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        inputManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
         notes_list.layoutManager = LinearLayoutManager(this)
         notes_list.adapter = NoteAdapter(noteList, this)
 
         addNoteBtn.setOnClickListener { addNoteToList() }
-        endTripBtn.setOnClickListener { if (checkFinishOkay()) finish() }
+        endTripBtn.setOnClickListener {
+            if (checkFinishOkay()) {
+            finish()
+            }
+        }
     }
 
     private fun addNoteToList() {
-        if (note_shipDirection.text.toString() == "" || note_shipSpeed.text.toString() == "" || note_windDirection.text.toString() == "" || note_windSpeed.text.toString() == "") {
-            Toast.makeText(this, R.string.toast_fillAllBoxes, Toast.LENGTH_SHORT).show()
-        } else {
+        if (note_shipDirection.text.toString() != "" || note_shipSpeed.text.toString() != "" || note_windDirection.text.toString() != "" || note_windSpeed.text.toString() != "") {
+            inputManager.hideSoftInputFromWindow(currentFocus.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
             noteList.add(
                 Note(
                     shipDirection = note_shipDirection.text.toString(),
@@ -46,9 +60,12 @@ class CreateTrip : AppCompatActivity() {
             note_shipSpeed.setText("")
             note_windDirection.setText("")
             note_windSpeed.setText("")
+        } else {
+            Toast.makeText(this, R.string.toast_fillAllBoxes, Toast.LENGTH_SHORT).show()
         }
     }
 
+    //TODO: CHECK
     private fun checkFinishOkay(): Boolean {
         createTrip()
         return true
@@ -68,12 +85,25 @@ class CreateTrip : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        vibrate()
         Toast.makeText(this, R.string.toast_endTrip, Toast.LENGTH_SHORT).show()
     }
 
     override fun finish() {
         super.finish()
         overridePendingTransition(R.anim.no_movement,R.anim.slide_out_down)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+    }
+
+    private fun vibrate(){
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibe.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibe.vibrate(200)
+        }
     }
 
 }

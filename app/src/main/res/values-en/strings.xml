@@ -33,11 +33,13 @@
     <string name="newTrip_endBtn">End Trip</string>
     <string name="settings_disclaimerBtn">Disclaimer</string>
     <string name="preTrip_captain_hint">NAME</string>
-    <string name="toast_endTrip">Pres the \"End Trip\" Button</string>
+    <string name="toast_endTrip">Press the \"End Trip\" Button</string>
     <string name="toast_tripAdded">New trip added</string>
     <string name="toast_tripNotAdded">Couldn\'t add trip</string>
     <string name="toast_fillAllBoxes">Fill all boxes</string>
     <string name="preTrip_crewSize">Crewmembers</string>
     <string name="preTrip_crewSize_hint">HOW MANY?</string>
     <string name="toast_insertInfo">Please fill all boxes</string>
+    <string name="toast_fetchTripFailed">Couldn\'t fetch trips</string>
+    <string name="chooseBoat_addBoatBtn">Add Boat</string>
 </resources>
