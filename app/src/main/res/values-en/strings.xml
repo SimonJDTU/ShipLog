@@ -42,4 +42,6 @@
     <string name="toast_insertInfo">Please fill all boxes</string>
     <string name="toast_fetchTripFailed">Couldn\'t fetch trips</string>
     <string name="chooseBoat_addBoatBtn">Add Boat</string>
+    <string name="toast_emptyAllBoxes">Empty all boxes of info</string>
+    <string name="dialog_endTrip_msg">Are you sure you want to finish?</string>
 </resources>

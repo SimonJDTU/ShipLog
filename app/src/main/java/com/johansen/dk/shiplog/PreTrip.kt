@@ -2,6 +2,7 @@ package com.johansen.dk.shiplog
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
@@ -21,9 +22,12 @@ class PreTrip : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pre_trip)
 
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
         vibe = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         setOnclickListeners()
+
 
         setShipShowcase(null)
 
@@ -44,7 +48,15 @@ class PreTrip : AppCompatActivity() {
     private fun setOnclickListeners() {
         preTrip_startTripBtn.setOnClickListener {
             if (regexCheck()) {
-                dialogContinue()
+                MaterialDialog(this).show {
+                    message(R.string.dialog_preTrip_msg)
+                    positiveButton(R.string.dialog_button_yes) { dialog ->
+                        goToCreateActivity()
+                    }
+                    negativeButton(R.string.dialog_button_no) { dialog ->
+                        this.dismiss()
+                    }
+                }
             } else {
                 Toast.makeText(this, R.string.toast_insertInfo, Toast.LENGTH_SHORT).show()
             }
@@ -103,17 +115,6 @@ class PreTrip : AppCompatActivity() {
         }
     }
 
-    private fun dialogContinue(){
-        MaterialDialog(this).show {
-            message(R.string.dialog_preTrip_msg)
-            positiveButton(R.string.dialog_button_yes) { dialog ->
-                goToCreateActivity()
-            }
-            negativeButton(R.string.dialog_button_no) { dialog ->
-                this.dismiss()
-            }
-        }
-    }
 
     private fun goToCreateActivity(){
         startActivity(Intent(this, CreateTrip::class.java))

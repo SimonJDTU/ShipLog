@@ -2,21 +2,15 @@ package com.johansen.dk.shiplog
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
+import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.*
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.crashlytics.android.Crashlytics
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import com.johansen.dk.shiplog.adapters.TripsAdapter
 import com.johansen.dk.shiplog.data.Ship
 import com.johansen.dk.shiplog.data.Trip
@@ -27,21 +21,23 @@ class HomeScreen : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
     private val db = FirebaseFirestore.getInstance()
     private lateinit var vibe : Vibrator
-
-    //private val mStorageRef = FirebaseStorage.getInstance()
+    private val trips : MutableList<Trip> = mutableListOf()
+    private val ships : MutableList<Ship> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
 
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
         vibe = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         setOnclickListeners()
 
+        createShipList()
     }
 
     private fun createTripList() {
-        val trips : MutableList<Trip> = mutableListOf()
         db.collection("trips")
             .get()
             .addOnCompleteListener { task ->
@@ -62,6 +58,22 @@ class HomeScreen : AppCompatActivity() {
             }
     }
 
+    private fun createShipList() {
+        db.collection("ships")
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    for (document in task.result!!) {
+                        ships.add(
+                            Ship(document.get("name") as String, document.get("imageLink") as String)
+                        )
+                    }
+                } else {
+                    Toast.makeText(this, "Couldn't fetch ships",Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
     private fun setOnclickListeners() {
         home_trip.setOnClickListener{
             startActivity(Intent(this, PreTrip::class.java))
@@ -69,7 +81,11 @@ class HomeScreen : AppCompatActivity() {
         }
 
         home_boats.setOnClickListener{
-            startActivity(Intent(this, ShipOverview::class.java))
+
+            val intent = Intent(this, ShipOverview::class.java)
+            
+            intent.putParcelableArrayListExtra("SHIPS", ArrayList(ships))
+            startActivity(intent)
             overridePendingTransition(R.anim.slide_in_bottom,R.anim.no_movement)
         }
 
@@ -114,6 +130,8 @@ class HomeScreen : AppCompatActivity() {
         trips_list.visibility = View.GONE
         createTripList()
     }
+
+
 
     private fun vibrate(){
         if (Build.VERSION.SDK_INT >= 26) {

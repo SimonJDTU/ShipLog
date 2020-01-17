@@ -1,6 +1,7 @@
 package com.johansen.dk.shiplog
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +14,8 @@ class Settings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         SetOnclickListeners()
 

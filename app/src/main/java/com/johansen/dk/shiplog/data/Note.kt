@@ -1,7 +1,5 @@
 package com.johansen.dk.shiplog.data
 
-data class Note(val time : String = getTime(), val shipSpeed : String, val shipDirection : String, val windSpeed : String, val windDirection : String)
+import java.util.*
 
-fun getTime(): String {
-    return "Not Implemented"
-}
+data class Note(val time : Date, val shipSpeed : String, val shipDirection : String, val windSpeed : String, val windDirection : String)

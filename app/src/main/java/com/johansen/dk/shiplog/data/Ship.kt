@@ -1,27 +1,25 @@
 package com.johansen.dk.shiplog.data
 
-import android.net.Uri
+import android.os.Parcelable
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
+data class Ship(val name: String, private val imageLink: String) : Parcelable {
 
-data class Ship(val name : String, private val imageLink : String){
+    lateinit var image: ByteArray
 
-    var image : Uri? = getImage(imageLink)
-
-}
-
-private fun getImage(imageLink : String) : Uri {
-
-    val storageRef =  FirebaseStorage.getInstance().reference
-    val pathReference = storageRef.child(imageLink)
-    lateinit var image : Uri
-
-    pathReference.downloadUrl.addOnSuccessListener {
-        image=it
-    }.addOnFailureListener {
-        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-        it.printStackTrace()
+    init {
+        val storageRef = FirebaseStorage.getInstance().reference
+        val pathReference = storageRef.child(imageLink)
+        val ONE_MEGABYTE: Long = 1024 * 1024
+        pathReference.getBytes(ONE_MEGABYTE).addOnSuccessListener {
+            image = it.clone()
+        }.addOnFailureListener {
+            it.printStackTrace()
+        }
     }
-    return image
 }
+
+
 
