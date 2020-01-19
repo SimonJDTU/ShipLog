@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.*
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.johansen.dk.shiplog.data.Ship
@@ -13,10 +13,11 @@ import kotlinx.android.synthetic.main.activity_pre_trip.*
 
 class PreTrip : AppCompatActivity() {
 
-    private val shipList : List<Ship> = emptyList()
-    private var methodSelected : Boolean? = null
+    private var drivingMethod: Boolean? = null
     private var doubleBackToExitPressedOnce = false
-    private lateinit var vibe : Vibrator
+    private lateinit var vibe: Vibrator
+    private lateinit var ships: MutableList<Ship>
+    private var chosenShip : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,21 +29,15 @@ class PreTrip : AppCompatActivity() {
 
         setOnclickListeners()
 
+        ships = intent.getSerializableExtra("ships") as ArrayList<Ship>
 
-        setShipShowcase(null)
-
-        }
+        setShipShowcase(chosenShip)
+    }
 
     //TODO: Insert when implemented image data collection from firebase storage
-    private fun setShipShowcase(ship : Ship?) {
-        if (ship != null) {
-            preTrip_shipName.text = ship.name
-            //TODO: Set image connected to shipresource
-            preTrip_shipSelection.setImageResource(R.mipmap.image2)
-        }else{
-            preTrip_shipName.text = "HELGE ASK _ TEMP TEXT"
-            preTrip_shipSelection.setImageResource(R.mipmap.image2)
-        }
+    private fun setShipShowcase(value : Int) {
+        preTrip_shipName.text = ships[value].name
+        preTrip_shipImage.setImageResource(ships[value].imageLink.toInt())
     }
 
     private fun setOnclickListeners() {
@@ -65,23 +60,23 @@ class PreTrip : AppCompatActivity() {
         //if motor is selected value of boolean methodSelected = false
         //if oars is selected value of boolean methodSelected = true
         preTrip_motor.setOnClickListener {
-            methodSelected=false
+            drivingMethod = false
             preTrip_motor.setBackgroundResource(R.drawable.button_circle_blue)
             preTrip_oars.setBackgroundResource(R.drawable.button_circle_gray)
         }
 
         preTrip_oars.setOnClickListener {
-            methodSelected=true
+            drivingMethod = true
             preTrip_oars.setBackgroundResource(R.drawable.button_circle_blue)
             preTrip_motor.setBackgroundResource(R.drawable.button_circle_gray)
         }
 
-        preTrip_shipSelection.setOnClickListener{dialogShipchoice()}
+        preTrip_shipImage.setOnClickListener { dialogShipchoice() }
 
-}
+    }
 
     private fun regexCheck(): Boolean {
-        if(preTrip_captain.text.toString().trim().isEmpty() || methodSelected==null || preTrip_crewsize.text.toString().trim().isEmpty()){
+        if (preTrip_captain.text.toString().trim().isEmpty() || drivingMethod == null || preTrip_crewsize.text.toString().trim().isEmpty()) {
             return false
         }
         return true
@@ -92,7 +87,7 @@ class PreTrip : AppCompatActivity() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
             return
-        } else{
+        } else {
             vibrate()
             this.doubleBackToExitPressedOnce = true
             Toast.makeText(this, getString(R.string.toast_backToHome), Toast.LENGTH_LONG).show()
@@ -101,32 +96,41 @@ class PreTrip : AppCompatActivity() {
 
     }
 
-    private fun dialogShipchoice(){
-        val myItems = listOf("Hello", "World")
+    private fun dialogShipchoice() {
+        val myItems : MutableList<String> = mutableListOf()
+        for(it in ships){
+            myItems.add(it.name)
+        }
 
         MaterialDialog(this).show {
             listItemsSingleChoice(
                 items = myItems,
-                initialSelection = 0
+                initialSelection = chosenShip
             ) { dialog, index, text ->
-                //TODO: Select the correct ship
+                chosenShip=index
+                setShipShowcase(index)
             }
             positiveButton(R.string.dialog_button_positive)
         }
     }
 
 
-    private fun goToCreateActivity(){
-        startActivity(Intent(this, CreateTrip::class.java))
+    private fun goToCreateActivity() {
+        val intent = Intent(this, CreateTrip::class.java)
+        intent.putExtra("ship", ships[chosenShip])
+        intent.putExtra("crewSize", preTrip_crewsize.text.toString().toInt())
+        intent.putExtra("captain", preTrip_captain.text.toString())
+        intent.putExtra("drivingMethod", drivingMethod)
+        startActivity(intent)
         finish()
     }
 
     override fun finish() {
         super.finish()
-        overridePendingTransition(R.anim.no_movement,R.anim.slide_out_down)
+        overridePendingTransition(R.anim.no_movement, R.anim.slide_out_down)
     }
 
-    private fun vibrate(){
+    private fun vibrate() {
         if (Build.VERSION.SDK_INT >= 26) {
             vibe.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
         } else {

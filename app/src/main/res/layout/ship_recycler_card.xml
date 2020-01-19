@@ -28,7 +28,7 @@
             android:adjustViewBounds="true"
             android:background="@color/white"
             android:scaleType="fitCenter"
-            app:srcCompat="@mipmap/image2" />
+            app:srcCompat="@mipmap/helge_ask" />
 
     </LinearLayout>
 

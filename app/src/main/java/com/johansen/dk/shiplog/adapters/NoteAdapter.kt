@@ -1,7 +1,6 @@
 package com.johansen.dk.shiplog.adapters
 
 import android.content.Context
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,18 +25,16 @@ class NoteAdapter(private val items : MutableList<Note>, private val context: Co
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val temp = items[position]
-        //holder.time?.text = temp.time
-        holder.windSpeed.text = temp.windSpeed
-        holder.windDirection.text = temp.windDirection
-        holder.sailSpeed.text = temp.shipSpeed
-        holder.sailDirection.text = temp.shipDirection
-        holder.tripDate.text = temp.time.toString()
+        holder.windSpeed.text = temp.windSpeed + " " + context.resources.getString(R.string.windSpeedHint)
+        holder.windDirection.text = temp.windDirection + " " + context.resources.getString(R.string.directionHint)
+        holder.sailSpeed.text = temp.shipSpeed + " " + context.resources.getString(R.string.sailSpeedHint)
+        holder.sailDirection.text = temp.shipDirection + " " + context.resources.getString(R.string.directionHint)
+        holder.tripDate.text = Date(temp.noteTime).toString()
         holder.tripCounter.text = "#"+(position+1).toString()
     }
 }
 
 class NoteViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-    //val time = view.note_date
     val sailSpeed = view.note_sailSpeed!!
     val sailDirection = view.note_sailDirection!!
     val windSpeed = view.note_windSpeed!!

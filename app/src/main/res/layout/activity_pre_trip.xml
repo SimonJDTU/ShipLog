@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/preTrip_crewSize_hint"
-            android:inputType="textPersonName" />
+            android:inputType="number|phone" />
 
         <TextView
             android:id="@+id/textView9"
@@ -84,7 +84,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/preTrip_shipSelection"
+                android:id="@+id/preTrip_shipImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
@@ -92,7 +92,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@mipmap/image2" />
+                app:srcCompat="@mipmap/helge_ask" />
 
             <TextView
                 android:id="@+id/preTrip_shipName"
@@ -102,8 +102,8 @@
                 android:text="SHIP_NAME"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/preTrip_shipSelection"
-                app:layout_constraintTop_toTopOf="@+id/preTrip_shipSelection" />
+                app:layout_constraintStart_toStartOf="@+id/preTrip_shipImage"
+                app:layout_constraintTop_toTopOf="@+id/preTrip_shipImage" />
 
             <TextView
                 android:id="@+id/preTrip_shipInfo"

@@ -11,7 +11,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.FirebaseFirestore
 import com.johansen.dk.shiplog.adapters.ShipAdapter
+import com.johansen.dk.shiplog.adapters.TripsAdapter
 import com.johansen.dk.shiplog.data.Ship
 import com.johansen.dk.shiplog.data.Trip
 import kotlinx.android.synthetic.main.activity_home_screen.*
@@ -21,6 +23,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStream
 import java.util.*
+import kotlin.collections.ArrayList
 
 class ShipOverview : AppCompatActivity() {
 
@@ -30,56 +33,12 @@ class ShipOverview : AppCompatActivity() {
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
-        setOnclickListeners()
+        val ships = intent.getSerializableExtra("ships") as ArrayList<Ship>
 
-        val ships : MutableList<Ship> = mutableListOf()
+        ship_list.layoutManager = LinearLayoutManager(this)
+        val listAdapter = ShipAdapter(ships, this)
+        ship_list.adapter = listAdapter
 
-        chooseBoat_recyclerView.layoutManager = LinearLayoutManager(this)
-        trips_list.adapter = ShipAdapter(ships, this)
-    }
-
-    private fun setOnclickListeners() {
-        chooseBoat_addBoatBtn.setOnClickListener{Toast.makeText(this, "NOT IMPLEMENTED",Toast.LENGTH_SHORT).show()}
-    }
-
-    //https://android--code.blogspot.com/2018/04/android-kotlin-save-image-to-internal.html
-    // Method to save an image to internal storage
-    private fun saveImageToInternalStorage(drawableId:Int): Uri {
-        // Get the image from drawable resource as drawable object
-        val drawable = ContextCompat.getDrawable(applicationContext,drawableId)
-
-        // Get the bitmap from drawable object
-        val bitmap = (drawable as BitmapDrawable).bitmap
-
-        // Get the context wrapper instance
-        val wrapper = ContextWrapper(applicationContext)
-
-        // Initializing a new file
-        // The bellow line return a directory in internal storage
-        var file = wrapper.getDir("images", Context.MODE_PRIVATE)
-
-
-        // Create a file to save the image
-        file = File(file, "${UUID.randomUUID()}.jpg")
-
-        try {
-            // Get the file output stream
-            val stream: OutputStream = FileOutputStream(file)
-
-            // Compress bitmap
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
-
-            // Flush the stream
-            stream.flush()
-
-            // Close stream
-            stream.close()
-        } catch (e: IOException){ // Catch the exception
-            e.printStackTrace()
-        }
-
-        // Return the saved image uri
-        return Uri.parse(file.absolutePath)
     }
 
     override fun finish() {

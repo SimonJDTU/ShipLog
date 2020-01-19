@@ -8,7 +8,7 @@
     <string name="settings_looks">Udseende</string>
     <string name="settings_button_dark">Mørk</string>
     <string name="settings_button_light">Lys</string>
-    <string name="settings_boat">Båd</string>
+    <string name="settings_boat">Ship</string>
     <string name="settings_weather">Vejr</string>
     <string name="settings_disclaimerBtn">Ansvarsfraskrivelse</string>
 
@@ -29,14 +29,17 @@
     <string name="newTrip_title">Ny rejse</string>
     <string name="newTrip_newNote">Tilføj note</string>
     <string name="newTrip_endBtn">Slut Rejse</string>
+    <string name="sailSpeedHint">sm/t</string>
+    <string name="windSpeedHint" translatable="false">m/s</string>
+    <string name="directionHint">grader</string>
 
     <string name="noteCard_windSpeed">Vindhastighed</string>
     <string name="noteCard_windDirection">Vindretning</string>
     <string name="noteCard_sailSpeed">Sejlhastighed</string>
     <string name="noteCard_sailDirection">Sejlretning</string>
 
-    <string name="chooseBoat_title">Vælg en båd</string>
-    <string name="chooseBoat_addBoatBtn">Tilføj Båd</string>
+    <string name="chooseBoat_title">Dette er dine skibe</string>
+    <string name="chooseBoat_addBoatBtn">Tilføj Skib</string>
 
     <string name="toast_closeApp">Klik tilbage igen for at lukke appen</string>
     <string name="toast_backToHome">Klik tilbage igen for at gå til menu</string>
@@ -46,7 +49,9 @@
     <string name="toast_fillAllBoxes">Udfyld alle boxe</string>
     <string name="toast_insertInfo">Udfyld venligst alle bokse</string>
     <string name="toast_fetchTripFailed">Kunne ikke hente rejser</string>
+    <string name="toast_fetchShipFailed">Kunne ikke hente skibe</string>
     <string name="toast_emptyAllBoxes">Tøm alle boxe for info</string>
+    <string name="toast_waitTilFetchFinish">Vent venligst til data er hentet</string>
 
 
     <string name="dialog_button_positive">Vælg</string>

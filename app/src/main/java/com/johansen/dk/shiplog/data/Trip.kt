@@ -1,30 +1,11 @@
 package com.johansen.dk.shiplog.data
 
-import java.util.*
+import kotlin.properties.Delegates
 
-import kotlin.random.Random
+data class Trip(var shipData: Ship, var crewSize: Int, var crewCaptain: String, val tripStart: Long, val drivingMethod : Boolean){
 
-class Trip(var shipName : String, var crewSize : Long, var crewCaptain : String){
-
-    private lateinit var testArray : MutableList<Note>
-    private lateinit var tripID : String
-    private lateinit var tripStart : String
-    private lateinit var tripEnd : String
-
-
-    fun setTripID(ID: String){
-        tripID=ID
-    }
+    lateinit var noteList : MutableList<Note>
+    var tripEnd by Delegates.notNull<Long>()
 
 }
-
-fun randomGenerator(): String {
-    val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
-
-    return (1..10)
-        .map { i -> Random.nextInt(0, charPool.size) }
-        .map(charPool::get)
-        .joinToString("")
-}
-
 

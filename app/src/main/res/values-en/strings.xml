@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="chooseBoat_title">Choose a boat</string>
+    <string name="chooseBoat_title">These are your ships</string>
     <string name="dialog_button_no">No</string>
     <string name="dialog_button_positive">Pick</string>
     <string name="dialog_button_yes">Yes</string>
@@ -12,7 +12,7 @@
     <string name="noteCard_sailSpeed">Sail Speed</string>
     <string name="noteCard_windDirection">Wind Direction</string>
     <string name="noteCard_windSpeed">Wind Speed</string>
-    <string name="settings_boat">Boat</string>
+    <string name="settings_boat">Ship</string>
     <string name="settings_button_dark">Dark</string>
     <string name="settings_button_light">Light</string>
     <string name="settings_language">Language</string>
@@ -41,7 +41,11 @@
     <string name="preTrip_crewSize_hint">HOW MANY?</string>
     <string name="toast_insertInfo">Please fill all boxes</string>
     <string name="toast_fetchTripFailed">Couldn\'t fetch trips</string>
-    <string name="chooseBoat_addBoatBtn">Add Boat</string>
+    <string name="chooseBoat_addBoatBtn">Add Ship</string>
     <string name="toast_emptyAllBoxes">Empty all boxes of info</string>
     <string name="dialog_endTrip_msg">Are you sure you want to finish?</string>
+    <string name="directionHint">degrees</string>
+    <string name="sailSpeedHint">sm/h</string>
+    <string name="toast_fetchShipFailed">Couldn\'t fetch ships</string>
+    <string name="toast_waitTilFetchFinish">Please wait til data is fetched</string>
 </resources>

@@ -1,5 +1,3 @@
 package com.johansen.dk.shiplog.data
 
-import java.util.*
-
-data class Note(val time : Date, val shipSpeed : String, val shipDirection : String, val windSpeed : String, val windDirection : String)
+data class Note(val noteTime: Long, val shipSpeed: String, val shipDirection: String, val windSpeed: String, val windDirection: String)

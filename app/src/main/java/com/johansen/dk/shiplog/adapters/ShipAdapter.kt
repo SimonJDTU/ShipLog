@@ -27,15 +27,13 @@ class ShipAdapter(private val items : MutableList<Ship>, private val context: Co
 
     override fun onBindViewHolder(holder: ShipViewHolder, position: Int) {
         val temp = items[position]
-        //holder.time?.text = temp.time
         holder.shipCard_name.text=temp.name
-        holder.shipCard_image.setImageURI(Uri.parse(temp.image.toString()))
+        holder.shipCard_image.setImageResource(temp.imageLink.toInt())
     }
 }
 
 class ShipViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-    //val time = view.note_date
-    val shipCard_name = view.shipCard_name!!
-    val shipCard_image = view.shipCard_image!!
+    val shipCard_name = view.shipCard_name
+    val shipCard_image = view.shipCard_image
 }
 
