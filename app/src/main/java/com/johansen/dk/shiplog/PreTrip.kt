@@ -118,7 +118,7 @@ class PreTrip : AppCompatActivity() {
     private fun goToCreateActivity() {
         val intent = Intent(this, CreateTrip::class.java)
         intent.putExtra("ship", ships[chosenShip])
-        intent.putExtra("crewSize", preTrip_crewsize.text.toString().toInt())
+        intent.putExtra("crewSize", preTrip_crewsize.text.toString())
         intent.putExtra("captain", preTrip_captain.text.toString())
         intent.putExtra("drivingMethod", drivingMethod)
         startActivity(intent)

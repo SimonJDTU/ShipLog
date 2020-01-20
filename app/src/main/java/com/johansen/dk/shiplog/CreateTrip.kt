@@ -30,7 +30,6 @@ class CreateTrip : AppCompatActivity() {
     private lateinit var inputManager: InputMethodManager
     private lateinit var trip: Trip
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_trip)
@@ -43,7 +42,7 @@ class CreateTrip : AppCompatActivity() {
 
         trip = Trip(
             intent.getSerializableExtra("ship") as Ship,
-            intent.getSerializableExtra("crewSize") as Int,
+            intent.getSerializableExtra("crewSize") as String,
             intent.getSerializableExtra("captain") as String,
             calInstanceStart.time.time,
             intent.getSerializableExtra("drivingMethod") as Boolean
@@ -53,6 +52,11 @@ class CreateTrip : AppCompatActivity() {
         notes_list.adapter = NoteAdapter(noteList, this)
 
         setOnclickListener()
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.no_movement, R.anim.slide_out_down)
     }
 
     private fun setOnclickListener() {
@@ -137,11 +141,6 @@ class CreateTrip : AppCompatActivity() {
     override fun onBackPressed() {
         vibrate()
         Toast.makeText(this, R.string.toast_endTrip, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(R.anim.no_movement, R.anim.slide_out_down)
     }
 
     private fun vibrate() {

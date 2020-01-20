@@ -15,6 +15,7 @@ import com.johansen.dk.shiplog.adapters.TripsAdapter
 import com.johansen.dk.shiplog.data.DisplayTrip
 import com.johansen.dk.shiplog.data.Note
 import com.johansen.dk.shiplog.data.Ship
+import kotlinx.android.synthetic.main.activity_create_trip.*
 import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlin.collections.ArrayList
 
@@ -37,6 +38,13 @@ class HomeScreen : AppCompatActivity(), OnTripClickListener {
         createShips()
 
         setOnclickListeners()
+
+        trips_list.layoutManager = LinearLayoutManager(this)
+        val listAdapter = TripsAdapter(trips, this, this)
+        trips_list.adapter = listAdapter
+
+        loaderAnimation.visibility = View.VISIBLE
+        trips_list.visibility = View.INVISIBLE
     }
 
     private fun createShips() {
@@ -62,30 +70,25 @@ class HomeScreen : AppCompatActivity(), OnTripClickListener {
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    trips.clear()
                     for (document in task.result!!) {
-
-                        trips.clear()
 
                         val tempMap : Map<*,*> = document.get("shipData") as Map<*,*>
 
                         val tempTrip = DisplayTrip(
                             Ship(tempMap["name"].toString(), tempMap["imageLink"].toString().toLong()),
-                            document.get("crewSize") as Long,
+                            document.get("crewSize") as String,
                             document.get("crewCaptain") as String,
                             document.get("tripStart") as Long,
                             document.get("tripEnd") as Long,
                             document.get("noteList") as ArrayList<Any>,
                             document.get("drivingMethod") as Boolean
                         )
-
                         trips.add(tempTrip)
-
                     }
-                    trips_list.layoutManager = LinearLayoutManager(this)
-                    val listAdapter = TripsAdapter(trips, this, this)
-                    trips_list.adapter = listAdapter
-                    loaderAnimation.visibility = View.GONE
+                    loaderAnimation.visibility = View.INVISIBLE
                     trips_list.visibility = View.VISIBLE
+                    trips_list.adapter!!.notifyDataSetChanged()
                 } else {
                     trips_list.visibility = View.GONE
                     loaderAnimation.visibility = View.VISIBLE
@@ -140,9 +143,9 @@ class HomeScreen : AppCompatActivity(), OnTripClickListener {
     override fun onResume() {
         super.onResume()
         loaderAnimation.visibility = View.VISIBLE
-        trips_list.visibility = View.GONE
-
+        trips_list.visibility = View.INVISIBLE
         createTripList()
+
     }
 
     private fun vibrate() {
